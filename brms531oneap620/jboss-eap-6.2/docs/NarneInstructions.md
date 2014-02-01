@@ -42,11 +42,11 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
  *NOTE* If starting from scratch, you need at least one admin BRMS user prior to enabling authoriation otherwise you will get '401/403 errors, and not be able to log in to access the permissions administration. 
 
-```
-<component name="org.jboss.seam.security.roleBasedPermissionResolver">
-   <property name="enableRoleBasedAuthorization">true</property>
-</component>
-```
+ ```
+ <component name="org.jboss.seam.security.roleBasedPermissionResolver">
+    <property name="enableRoleBasedAuthorization">true</property>
+ </component>
+ ```
 
 + Restart the server
 
@@ -55,8 +55,8 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 + Configure LDAP
 
  BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
-  + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
-  + `jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties` 
+   + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
+   + `jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties` 
 
  *NOTE* Since these credentials are posted on the web, it is recommended that all passwords are changed for defaults before putting them into QA or Production environments.
 
@@ -64,17 +64,16 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 + Restart and verify 
 
-
 ## Remaining Issues
 
 + Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
  It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
 
-```
-Can not build the package. One or more of the classes that are needed were compiled with an unsupported Java version.,
-For example the pojo classes were compiled with Java 1.6 and Guvnor is running on Java 1.5.
-```
+ ```
+ Can not build the package. One or more of the classes that are needed were compiled with an unsupported Java version.,
+ For example the pojo classes were compiled with Java 1.6 and Guvnor is running on Java 1.5.
+ ```
 
 ## Reference Material
 
@@ -118,41 +117,41 @@ NOTE: These configuration were only made to `standalone.xml`.  If other profiles
 + Added the `java:jboss/datasources/brmsDS` datasource
 
 ```
-		<datasource jndi-name="java:jboss/datasources/brmsDS" pool-name="brmsDS" enabled="true" use-java-context="true" spy="true">
-        		<connection-url>jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</connection-url>
-        		<driver>oracle</driver>
-        		<security>
-          			<user-name>brms</user-name>
-          			<password>brms</password>
-        		</security>
-        		<validation>
-				  <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
-				  <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
-				  <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
-        		</validation>
-      		</datasource>
+<datasource jndi-name="java:jboss/datasources/brmsDS" pool-name="brmsDS" enabled="true" use-java-context="true" spy="true">
+	<connection-url>jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</connection-url>
+        <driver>oracle</driver>
+        <security>
+        	<user-name>brms</user-name>
+        	<password>brms</password>
+        </security>
+        <validation>
+		<valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
+		<stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
+		<exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
+        </validation>
+</datasource>
 ```
 
 + Added the `java:jboss/datasources/jbpmDS` datasource
 
 ```
-		  <xa-datasource jndi-name="java:jboss/datasources/jbpmDS" pool-name="XAOracleDS" spy="true">
-		      <driver>oracle</driver>
-		      <xa-datasource-property name="URL">jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</xa-datasource-property>
-		      <security>
-		          <user-name>jbpm</user-name>
-		          <password>jbpm</password>
-		      </security>
-		      <xa-pool>
-		           <is-same-rm-override>false</is-same-rm-override>
-		           <no-tx-separate-pools />
-		      </xa-pool>
-		      <validation>
-		          <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
-		          <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
-		          <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
-		      </validation>
-		  </xa-datasource>
+<xa-datasource jndi-name="java:jboss/datasources/jbpmDS" pool-name="XAOracleDS" spy="true">
+	<driver>oracle</driver>
+	<xa-datasource-property name="URL">jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</xa-datasource-property>
+	<security>
+		<user-name>jbpm</user-name>
+		<password>jbpm</password>
+	</security>
+	<xa-pool>
+		<is-same-rm-override>false</is-same-rm-override>
+		<no-tx-separate-pools />
+	</xa-pool>
+	<validation>
+		<valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
+		<stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
+		<exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
+	</validation>
+</xa-datasource>
 ```
 
 ### Configured JDBC Spy logger 
