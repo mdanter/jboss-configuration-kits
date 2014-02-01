@@ -17,18 +17,18 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 + Execute Oracle DDL scripts for the BRMS repository and JBPM operational tables
 
-These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc against two separate schemas named `brms` and `jbpm`. 
+ These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc against two separate schemas named `brms` and `jbpm`. 
 
-The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
+ The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
 
-Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
+ Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
 
   + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
   + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
 
 + Update JBoss datasource connection details
 
-In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
+ In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
 
 + Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
 
@@ -40,7 +40,7 @@ In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources
 
 + Enable authorization by editing `jboss-eap-6.2/standalone/deployments/jboss-brms.war/WEB-INF/components.xml` and setting the `enableRoleBasedAuthorization` propert to 'true'.
 
-*NOTE* If starting from scratch, you need at least one admin BRMS user prior to enabling authoriation otherwise you will get '401/403 errors, and not be able to log in to access the permissions administration. 
+ *NOTE* If starting from scratch, you need at least one admin BRMS user prior to enabling authoriation otherwise you will get '401/403 errors, and not be able to log in to access the permissions administration. 
 
 ```
 <component name="org.jboss.seam.security.roleBasedPermissionResolver">
@@ -54,13 +54,13 @@ In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources
 
 + Configure LDAP
 
-BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
+ BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
   + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
   + `jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties` 
 
-*NOTE* Since these credentials are posted on the web, it is recommended that all passwords are changed for defaults before putting them into QA or Production environments.
+ *NOTE* Since these credentials are posted on the web, it is recommended that all passwords are changed for defaults before putting them into QA or Production environments.
 
-Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference](https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
+ Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference](https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
 
 + Restart and verify 
 
@@ -69,7 +69,7 @@ Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see sectio
 
 + Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
-It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
+ It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
 
 ```
 Can not build the package. One or more of the classes that are needed were compiled with an unsupported Java version.,
