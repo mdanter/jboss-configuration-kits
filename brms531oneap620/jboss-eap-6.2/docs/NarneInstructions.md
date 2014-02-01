@@ -17,18 +17,18 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 3. Execute Oracle DDL scripts for the BRMS repository and JBPM operational tables
 
-These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc.  
+ These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc against two separate schemas named `brms` and `jbpm`. 
 
-The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
+ The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
 
-Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
+ Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
 
- + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
- + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
+  + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
+  + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
 
 4. Update JBoss datasource connection details
 
-In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
+ In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
 
 5. Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
 
