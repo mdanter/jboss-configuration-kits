@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<profiles>
+  <profile name="jbpm" stencilset="bpmn2.0jbpm">
+  	<plugin name="ORYX.Plugins.SelectStencilSetPerspective"/>
+    <plugin name="ORYX.Plugins.FieldDataAssignmentEditors"/>
+    <!-- <plugin name="ORYX.Plugins.ServiceNodeEditor"/> -->
+    <plugin name="ORYX.Plugins.NodeXMLViewer"/>
+    <plugin name="ORYX.Plugins.Theme"/>
+JAVA_OPTS="$JAVA_OPTS -Djava.security.auth.login.config=$CATALINA_BASE/conf/jaas.config"
+    <plugin name="ORYX.Plugins.LockNode"/>
+    <plugin name="ORYX.Plugins.VoiceCommand"/>
+   <externalloadurl protocol="http" host="localhost:8080" subdomain="jboss-brms/org.drools.guvnor.Guvnor/oryxeditor" usr="admin" pwd="admin"/>
+  </profile>
+</profiles>

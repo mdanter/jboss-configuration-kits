@@ -200,7 +200,7 @@ JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.conf=$JBOSS_BASE_DIR/re
 
 ```
 rem Set the Jackrabbit repository path
-set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.jackrabbit.repository.home=%JBOSS_BASE_DIR%"
+set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.jackrabbit.repository.conf=%JBOSS_BASE_DIR%\repository.xml -Dorg.apache.jackrabbit.repository.home=%JBOSS_BASE_DIR%"
 ```
 
 ### Created a Oracle Jackrabbit Repository Configuration 

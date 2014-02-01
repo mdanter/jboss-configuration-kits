@@ -1,0 +1,141 @@
+2013-11-02 16:16:29,509 [main] INFO  bitronix.tm.BitronixTransactionManager - Bitronix Transaction Manager version 2.1.2
+2013-11-02 16:16:29,510 [main] DEBUG bitronix.tm.BitronixTransactionManager - JVM version 1.6.0_65
+2013-11-02 16:16:29,513 [main] DEBUG bitronix.tm.Configuration - loading configuration file /Users/joshoa/dev/archives/brms531ga/brmstc/tomcat6/conf/btm-config.properties
+2013-11-02 16:16:29,533 [main] INFO  bitronix.tm.Configuration - JVM unique ID: <tomcat-btm-node0>
+2013-11-02 16:16:29,540 [main] DEBUG bitronix.tm.BitronixTransactionManager - starting BitronixTransactionManager using a Configuration with [allowMultipleLrc=false, asynchronous2Pc=false, backgroundRecoveryInterval=1, backgroundRecoveryIntervalSeconds=60, currentNodeOnlyRecovery=true, defaultTransactionTimeout=60, disableJmx=false, filterLogStatus=false, forceBatchingEnabled=true, forcedWriteEnabled=true, gracefulShutdownInterval=60, jndiTransactionSynchronizationRegistryName=java:comp/TransactionSynchronizationRegistry, jndiUserTransactionName=java:comp/UserTransaction, journal=disk, logPart1Filename=/Users/joshoa/dev/archives/brms531ga/brmstc/tomcat6/work/btm1.tlog, logPart2Filename=/Users/joshoa/dev/archives/brms531ga/brmstc/tomcat6/work/btm2.tlog, maxLogSizeInMb=2, resourceConfigurationFilename=/Users/joshoa/dev/archives/brms531ga/brmstc/tomcat6/conf/resources.properties, serverId=tomcat-btm-node0, skipCorruptedLogs=false, warnAboutZeroResourceTransaction=true]
+2013-11-02 16:16:29,543 [main] DEBUG bitronix.tm.TransactionManagerServices - using journal disk
+2013-11-02 16:16:29,544 [main] DEBUG bitronix.tm.journal.DiskJournal - creation of log files
+2013-11-02 16:16:29,616 [main] DEBUG bitronix.tm.journal.DiskJournal - disk journal files max length: 2097173
+2013-11-02 16:16:29,641 [main] DEBUG bitronix.tm.journal.TransactionLogHeader - read header a Bitronix TransactionLogHeader with timestamp=1383423389590, state=CLEAN_LOG_STATE, position=21
+2013-11-02 16:16:29,724 [main] DEBUG bitronix.tm.journal.TransactionLogAppender - spawning disk force batcher thread
+2013-11-02 16:16:29,726 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceBatcherThread - disk force thread is up and running
+2013-11-02 16:16:29,726 [main] DEBUG bitronix.tm.journal.TransactionLogHeader - read header a Bitronix TransactionLogHeader with timestamp=1383423389546, state=CLEAN_LOG_STATE, position=21
+2013-11-02 16:16:29,726 [main] DEBUG bitronix.tm.journal.DiskJournal - logging to file 1: a TransactionLogAppender on btm1.tlog
+2013-11-02 16:16:29,726 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceBatcherThread - waiting for the wait queue to fill up
+2013-11-02 16:16:29,727 [main] DEBUG bitronix.tm.journal.DiskJournal - log file activated, forcing file state to disk
+2013-11-02 16:16:29,727 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceWaitQueue - waiting for some TransactionLogAppender to get enqueued
+2013-11-02 16:16:29,727 [main] DEBUG bitronix.tm.journal.DiskForceWaitQueue - enqueued a TransactionLogAppender on btm1.tlog, 1 TransactionLogAppender waiting for a disk force in bitronix.tm.journal.DiskForceWaitQueue@3219762f
+2013-11-02 16:16:29,727 [main] DEBUG bitronix.tm.journal.DiskForceBatcherThread - batching disk force, there are 1 TransactionLogAppender(s) in the wait queue
+2013-11-02 16:16:29,727 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceBatcherThread - wait queue is not empty anymore (1 in queue)
+2013-11-02 16:16:29,728 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceBatcherThread - forcing...
+2013-11-02 16:16:29,728 [main] DEBUG bitronix.tm.journal.DiskForceWaitQueue - waiting for a TransactionLogAppender on btm1.tlog to get dequeued
+2013-11-02 16:16:29,728 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceWaitQueue - returning head TransactionLogAppender
+2013-11-02 16:16:29,728 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.TransactionLogAppender - forcing log writing
+2013-11-02 16:16:29,729 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.TransactionLogAppender - done forcing log
+2013-11-02 16:16:29,729 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceWaitQueue - clearing list of 1 waiting TransactionLogAppender(s) in bitronix.tm.journal.DiskForceWaitQueue@3219762f
+2013-11-02 16:16:29,730 [main] DEBUG bitronix.tm.journal.DiskForceBatcherThread - wait queue got emptied, disk force is done
+2013-11-02 16:16:29,730 [main] DEBUG bitronix.tm.journal.DiskJournal - disk journal opened
+2013-11-02 16:16:29,732 [main] INFO  bitronix.tm.resource.ResourceLoader - reading resources configuration from /Users/joshoa/dev/archives/brms531ga/brmstc/tomcat6/conf/resources.properties
+2013-11-02 16:16:29,745 [main] DEBUG bitronix.tm.resource.ResourceLoader - creating resource a PoolingDataSource containing null
+2013-11-02 16:16:29,745 [main] DEBUG bitronix.tm.resource.jdbc.PoolingDataSource - building XA pool for brmsDatasource with 1 connection(s)
+2013-11-02 16:16:29,750 [main] DEBUG bitronix.tm.resource.common.XAPool - setting vendor property 'user' to 'brmsDS'
+2013-11-02 16:16:29,750 [main] DEBUG bitronix.tm.resource.common.XAPool - setting vendor property 'password' to 'jboss'
+2013-11-02 16:16:29,750 [main] DEBUG bitronix.tm.resource.common.XAPool - setting vendor property 'url' to 'jdbc:mysql://localhost:3306/brmsDS'
+2013-11-02 16:16:29,751 [main] DEBUG bitronix.tm.resource.common.XAPool - setting vendor property 'driverClassName' to 'com.mysql.jdbc.Driver'
+2013-11-02 16:16:29,751 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceBatcherThread - waiting for the wait queue to fill up
+2013-11-02 16:16:29,752 [bitronix-disk-force-batcher] DEBUG bitronix.tm.journal.DiskForceWaitQueue - waiting for some TransactionLogAppender to get enqueued
+2013-11-02 16:16:30,019 [main] WARN  bitronix.tm.resource.ResourceLoader - unable to create resource with unique name brmsDatasource
+bitronix.tm.resource.ResourceConfigurationException: cannot create JDBC datasource named brmsDatasource
+	at bitronix.tm.resource.jdbc.PoolingDataSource.init(PoolingDataSource.java:80)
+	at bitronix.tm.resource.ResourceLoader.initXAResourceProducers(ResourceLoader.java:179)
+	at bitronix.tm.resource.ResourceLoader.init(ResourceLoader.java:150)
+	at bitronix.tm.resource.ResourceLoader.init(ResourceLoader.java:80)
+	at bitronix.tm.BitronixTransactionManager.<init>(BitronixTransactionManager.java:63)
+	at bitronix.tm.TransactionManagerServices.getTransactionManager(TransactionManagerServices.java:62)
+	at bitronix.tm.integration.tomcat55.BTMLifecycleListener.lifecycleEvent(BTMLifecycleListener.java:18)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:794)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:596)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+Caused by: java.sql.SQLException: unable to connect to non-XA resource com.mysql.jdbc.Driver
+	at bitronix.tm.resource.jdbc.lrc.LrcXADataSource.getXAConnection(LrcXADataSource.java:106)
+	at bitronix.tm.resource.jdbc.PoolingDataSource.createPooledConnection(PoolingDataSource.java:331)
+	at bitronix.tm.resource.common.XAPool.createPooledObject(XAPool.java:291)
+	at bitronix.tm.resource.common.XAPool.growUntilMinPoolSize(XAPool.java:80)
+	at bitronix.tm.resource.common.XAPool.init(XAPool.java:71)
+	at bitronix.tm.resource.common.XAPool.<init>(XAPool.java:64)
+	at bitronix.tm.resource.jdbc.PoolingDataSource.buildXAPool(PoolingDataSource.java:89)
+	at bitronix.tm.resource.jdbc.PoolingDataSource.init(PoolingDataSource.java:76)
+	... 15 more
+Caused by: java.sql.SQLException: Access denied for user 'brmsDS'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1078)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4190)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4122)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:927)
+	at com.mysql.jdbc.MysqlIO.secureAuth411(MysqlIO.java:4689)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1304)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2486)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2519)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2304)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346)
+	at bitronix.tm.resource.jdbc.lrc.LrcXADataSource.getXAConnection(LrcXADataSource.java:102)
+	... 22 more
+2013-11-02 16:16:30,024 [main] DEBUG bitronix.tm.resource.jdbc.PoolingDataSource - trying to close already closed PoolingDataSource brmsDatasource
+2013-11-02 16:16:30,033 [main] DEBUG bitronix.tm.journal.TransactionLogCursor - end of transaction log file reached at 21
+2013-11-02 16:16:30,033 [main] DEBUG bitronix.tm.journal.DiskJournal - collected dangling records of a TransactionLogAppender on btm1.tlog, committing: 0, committed: 0, delta: 0
+2013-11-02 16:16:30,034 [main] DEBUG bitronix.tm.recovery.Recoverer - found 0 dangling record(s) in journal
+2013-11-02 16:16:30,034 [main] DEBUG bitronix.tm.recovery.Recoverer - committed 0 dangling transaction(s)
+2013-11-02 16:16:30,034 [main] DEBUG bitronix.tm.recovery.Recoverer - rolling back aborted branch(es)
+2013-11-02 16:16:30,034 [main] DEBUG bitronix.tm.recovery.Recoverer - rolled back 0 aborted branch(es)
+2013-11-02 16:16:30,034 [main] INFO  bitronix.tm.recovery.Recoverer - recovery committed 0 dangling transaction(s) and rolled back 0 aborted transaction(s) on 0 resource(s) [] (restricted to serverId 'tomcat-btm-node0')
+2013-11-02 16:16:30,034 [main] DEBUG bitronix.tm.BitronixTransactionManager - recovery will run in the background every 60 second(s)
+2013-11-02 16:16:30,044 [main] DEBUG bitronix.tm.timer.TaskScheduler - scheduling recovery task for Sat Nov 02 16:17:30 EDT 2013
+2013-11-02 16:16:30,045 [main] DEBUG bitronix.tm.timer.TaskScheduler - removing task by bitronix.tm.recovery.Recoverer@609903f4
+2013-11-02 16:16:30,045 [main] DEBUG bitronix.tm.timer.TaskScheduler - scheduled a RecoveryTask scheduled for Sat Nov 02 16:17:30 EDT 2013, total task(s) queued: 1
+2013-11-02 16:16:30,740 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - referencing resource with reference of type class org.apache.naming.ResourceRef
+2013-11-02 16:16:30,740 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - getting registered resource with uniqueName 'brmsDatasource'
+2013-11-02 16:16:31,044 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - referencing resource with reference of type class org.apache.naming.ResourceRef
+2013-11-02 16:16:31,044 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - getting registered resource with uniqueName 'brmsDatasource'
+2013-11-02 16:16:31,152 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - referencing resource with reference of type class org.apache.naming.ResourceRef
+2013-11-02 16:16:31,152 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - getting registered resource with uniqueName 'brmsDatasource'
+2013-11-02 16:16:31,214 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - referencing resource with reference of type class org.apache.naming.ResourceRef
+2013-11-02 16:16:31,214 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - getting registered resource with uniqueName 'brmsDatasource'
+2013-11-02 16:16:31,346 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - referencing resource with reference of type class org.apache.naming.ResourceRef
+2013-11-02 16:16:31,346 [main] DEBUG bitronix.tm.resource.ResourceObjectFactory - getting registered resource with uniqueName 'brmsDatasource'
+2013-11-02 16:17:30,153 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - running a RecoveryTask scheduled for Sat Nov 02 16:17:30 EDT 2013
+2013-11-02 16:17:30,153 [bitronix-scheduler] DEBUG bitronix.tm.timer.RecoveryTask - running recovery
+2013-11-02 16:17:30,154 [bitronix-scheduler] DEBUG bitronix.tm.timer.RecoveryTask - rescheduling recovery for Sat Nov 02 16:18:30 EDT 2013
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - scheduling recovery task for Sat Nov 02 16:18:30 EDT 2013
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - removing task by bitronix.tm.recovery.Recoverer@609903f4
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - cancelled a RecoveryTask scheduled for Sat Nov 02 16:17:30 EDT 2013, total task(s) still queued: 0
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - scheduled a RecoveryTask scheduled for Sat Nov 02 16:18:30 EDT 2013, total task(s) queued: 1
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - successfully ran a RecoveryTask scheduled for Sat Nov 02 16:17:30 EDT 2013
+2013-11-02 16:17:30,155 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - total task(s) still queued: 1
+2013-11-02 16:17:30,155 [bitronix-recovery-thread] DEBUG bitronix.tm.BitronixTransactionManager - oldest in-flight transaction's timestamp: -9223372036854775808
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.journal.TransactionLogCursor - end of transaction log file reached at 21
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.journal.DiskJournal - collected dangling records of a TransactionLogAppender on btm1.tlog, committing: 0, committed: 0, delta: 0
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - found 0 dangling record(s) in journal
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - committed 0 dangling transaction(s)
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - rolling back aborted branch(es)
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - rolled back 0 aborted branch(es)
+2013-11-02 16:17:30,156 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - recovery committed 0 dangling transaction(s) and rolled back 0 aborted transaction(s) on 0 resource(s) [] (restricted to serverId 'tomcat-btm-node0')
+2013-11-02 16:18:30,254 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - running a RecoveryTask scheduled for Sat Nov 02 16:18:30 EDT 2013
+2013-11-02 16:18:30,254 [bitronix-scheduler] DEBUG bitronix.tm.timer.RecoveryTask - running recovery
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.RecoveryTask - rescheduling recovery for Sat Nov 02 16:19:30 EDT 2013
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - scheduling recovery task for Sat Nov 02 16:19:30 EDT 2013
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - removing task by bitronix.tm.recovery.Recoverer@609903f4
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - cancelled a RecoveryTask scheduled for Sat Nov 02 16:18:30 EDT 2013, total task(s) still queued: 0
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - scheduled a RecoveryTask scheduled for Sat Nov 02 16:19:30 EDT 2013, total task(s) queued: 1
+2013-11-02 16:18:30,255 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - successfully ran a RecoveryTask scheduled for Sat Nov 02 16:18:30 EDT 2013
+2013-11-02 16:18:30,256 [bitronix-recovery-thread] DEBUG bitronix.tm.BitronixTransactionManager - oldest in-flight transaction's timestamp: -9223372036854775808
+2013-11-02 16:18:30,256 [bitronix-scheduler] DEBUG bitronix.tm.timer.TaskScheduler - total task(s) still queued: 1
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.journal.TransactionLogCursor - end of transaction log file reached at 21
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.journal.DiskJournal - collected dangling records of a TransactionLogAppender on btm1.tlog, committing: 0, committed: 0, delta: 0
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - found 0 dangling record(s) in journal
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - committed 0 dangling transaction(s)
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - rolling back aborted branch(es)
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - rolled back 0 aborted branch(es)
+2013-11-02 16:18:30,257 [bitronix-recovery-thread] DEBUG bitronix.tm.recovery.Recoverer - recovery committed 0 dangling transaction(s) and rolled back 0 aborted transaction(s) on 0 resource(s) [] (restricted to serverId 'tomcat-btm-node0')

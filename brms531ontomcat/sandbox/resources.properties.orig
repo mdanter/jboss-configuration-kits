@@ -1,0 +1,18 @@
+#file resources.properties
+resource.ds1.className=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+resource.ds1.uniqueName=jdbc/jbpmDS
+resource.ds1.minPoolSize=0
+resource.ds1.maxPoolSize=10
+resource.ds1.driverProperties.user=TEST
+resource.ds1.driverProperties.password=jboss
+resource.ds1.driverProperties.URL=jdbc:mysql://localhost:3306/brms53
+resource.ds1.allowLocalTransactions=true
+
+resource.ds2.className=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+resource.ds2.uniqueName=jdbc/jbpmTasksDS
+resource.ds2.minPoolSize=0
+resource.ds2.maxPoolSize=10
+resource.ds2.driverProperties.user=brms53
+resource.ds2.driverProperties.password=jboss
+resource.ds2.driverProperties.URL=jdbc:mysql://localhost:3306/brms53
+resource.ds2.allowLocalTransactions=true
