@@ -11,34 +11,34 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 ## Installation Steps
 
-1. Download the kit archive http://people.redhat.com/jowest/brms531oneap620/brms531oneap620.zip
++ Download the kit archive http://people.redhat.com/jowest/brms531oneap620/brms531oneap620.zip
 
-2. Unzip archive `brms531oneap620.zip` to installation location
++ Unzip archive `brms531oneap620.zip` to installation location
 
-3. Execute Oracle DDL scripts for the BRMS repository and JBPM operational tables
++ Execute Oracle DDL scripts for the BRMS repository and JBPM operational tables
 
- These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc against two separate schemas named `brms` and `jbpm`. 
+These scripts generate the brms and jbpm database users, tables, sequences, triggers, etc against two separate schemas named `brms` and `jbpm`. 
 
- The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
+The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
 
- Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
+Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
 
   + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
   + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
 
-4. Update JBoss datasource connection details
++ Update JBoss datasource connection details
 
- In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
+In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
 
-5. Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
++ Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
 
-6. Import your repository through Administration > Import Export
++ Import your repository through Administration > Import Export
 
-7. Login using the admin credentials: `admin` password `getredhat1!`
++ Login using the admin credentials: `admin` password `getredhat1!`
 
-8. Import your repository through Administration > Import Export.
++ Import your repository through Administration > Import Export.
 
-9. Enable authorization by editing `jboss-eap-6.2/standalone/deployments/jboss-brms.war/WEB-INF/components.xml` and setting the `enableRoleBasedAuthorization` propert to 'true'.
++ Enable authorization by editing `jboss-eap-6.2/standalone/deployments/jboss-brms.war/WEB-INF/components.xml` and setting the `enableRoleBasedAuthorization` propert to 'true'.
 
 *NOTE* If starting from scratch, you need at least one admin BRMS user prior to enabling authoriation otherwise you will get '401/403 errors, and not be able to log in to access the permissions administration. 
 
@@ -48,11 +48,11 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 </component>
 ```
 
-10. Restart the server
++ Restart the server
 
-Verify logins, and authorization enforcement.
+ Verify logins, and authorization enforcement.
 
-11. Configure LDAP
++ Configure LDAP
 
 BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
   + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
@@ -62,12 +62,12 @@ BRMS requires access to itself through a username and password. This has bee con
 
 Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference](https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
 
-12. Restart and verify 
++ Restart and verify 
 
 
 ## Remaining Issues
 
-1. Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
++ Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
 It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
 
@@ -79,17 +79,17 @@ For example the pojo classes were compiled with Java 1.6 and Guvnor is running o
 ## Reference Material
 
 + [Red Hat Customer Portal](http://access.redhat.com)
-With a subscription or current eval you can open support tickets, download packages, and search the knowledge base. 
+ With a subscription or current eval you can open support tickets, download packages, and search the knowledge base. 
 
 + [Red Hat Documentation](http://docs.redhat.com)
-Documentation is accessible without a login.
+ Documentation is accessible without a login.
 
   + Refer to the EAP 6.2 documentation for configuring LDAP and Datasources
   + Refer to the JBoss Enterprise BRMS documentation for configuring BRMS
 
 + [Middleware Administration Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-1.html)
 + [Middleware Development Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-2.html)
-There are training courses for JBoss EAP administration, BRMS development, which may be of interest.
+ There are training courses for JBoss EAP administration, BRMS development, which may be of interest.
 
 
 ## Kit Preconfiguration Log
