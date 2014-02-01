@@ -21,6 +21,9 @@
             <key>org.drools.repository.configurator</key><value>org.drools.repository.jackrabbit.JackrabbitRepositoryConfigurator</value>
             <!--  the root directory for the repo storage the directory must exist. -->
             <!--  <key>repository.root.directory</key><value>/opt/yourpath</value>  -->
+
+            <!-- NOTE: the repository root can be set using the org.apache.jackrabbit.repository.home java property -->
+
         </property>
 
         <!-- ModeShape 
@@ -72,7 +75,7 @@
         it is disabled.
     -->
     <component name="org.jboss.seam.security.roleBasedPermissionResolver">
-        <property name="enableRoleBasedAuthorization">true</property>
+        <property name="enableRoleBasedAuthorization">false</property>
     </component>
 
 </components>

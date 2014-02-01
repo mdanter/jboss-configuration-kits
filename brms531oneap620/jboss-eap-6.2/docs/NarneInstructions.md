@@ -23,22 +23,22 @@ The default credentials are set to the username equal to the password. The preco
 
 Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
 
- + jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql
- + jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql
+ + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
+ + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
 
 4. Update JBoss datasource connection details
 
 In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources modules section and edit the brmsDS and jbpmDS connection string for you database host / SID, and credentials if you have modified them from the defaults in the DDL.  
 
-4. Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
+5. Start the server `bin/standalone.[sh|bat] -b 0.0.0.0 -bmanagement 0.0.0.0`
 
-5. Import your repository through the 
+6. Import your repository through Administration > Import Export
 
-5. Login using the admin credentials: `admin` password `getredhat1!`
+7. Login using the admin credentials: `admin` password `getredhat1!`
 
-6. Import your repository through Administration > Import Export.
+8. Import your repository through Administration > Import Export.
 
-7. Enable authorization by editing `jboss-eap-6.2/standalone/deployments/jboss-brms.war/WEB-INF/components.xml` and setting the `enableRoleBasedAuthorization` propert to true.
+9. Enable authorization by editing `jboss-eap-6.2/standalone/deployments/jboss-brms.war/WEB-INF/components.xml` and setting the `enableRoleBasedAuthorization` propert to 'true'.
 
 *NOTE* If starting from scratch, you need at least one admin BRMS user prior to enabling authoriation otherwise you will get '401/403 errors, and not be able to log in to access the permissions administration. 
 
@@ -46,14 +46,13 @@ In `jboss-eap-6.2/standalone/configuration/standalone.xml` go to the datasources
 <component name="org.jboss.seam.security.roleBasedPermissionResolver">
    <property name="enableRoleBasedAuthorization">true</property>
 </component>
-
 ```
 
-8. Restart the server
+10. Restart the server
 
 Verify logins, and authorization enforcement.
 
-9. Configure LDAP
+11. Configure LDAP
 
 BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
   + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
@@ -61,14 +60,14 @@ BRMS requires access to itself through a username and password. This has bee con
 
 *NOTE* Since these credentials are posted on the web, it is recommended that all passwords are changed for defaults before putting them into QA or Production environments.
 
-Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference]ittps://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
+Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference](https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
 
-10. Restart and verify 
+12. Restart and verify 
 
 
 ## Remaining Issues
 
-1. Building packages give an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
+1. Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
 It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
 
@@ -77,7 +76,7 @@ Can not build the package. One or more of the classes that are needed were compi
 For example the pojo classes were compiled with Java 1.6 and Guvnor is running on Java 1.5.
 ```
 
-## Reference
+## Reference Material
 
 + [Red Hat Customer Portal](http://access.redhat.com)
 With a subscription or current eval you can open support tickets, download packages, and search the knowledge base. 
@@ -204,4 +203,25 @@ JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.home=$JBOSS_BASE_DIR"
 rem Set the Jackrabbit repository path
 set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.jackrabbit.repository.home=%JBOSS_BASE_DIR%"
 ```
+
+### Created a Oracle Jackrabbit Repository Configuration 
+
+Created a Oracle Jackrabbit Repository Configuration for an Oracle JNDI provided Datasource by:
++ Log into BRMS and going to Administation > Repository Configuration.
++ Select RDBMS type: Oracle 10g
++ Check 'Use JNDI'
++ Continue
++ Specify JDNI address `java:jboss/datasources/brmsDS`
++ Generate configuration
++ Copy the results into file `jboss-eap-6.2/standalone/repository.xml[.oracle]`.
+
+### Generated Oracle 11g DDLs
+
+Started BRMS after configuring it to use Oracle datasources. Generated DDLs using [Oracle SQL Developer](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html). 
+
+
+
+
+
+
 
