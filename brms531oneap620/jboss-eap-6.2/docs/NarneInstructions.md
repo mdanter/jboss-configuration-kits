@@ -22,9 +22,10 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
  The default credentials are set to the username equal to the password. The preconfigured jboss datasources match. It is expected that you will modify these credentials as necessary, and update the corresponding datasource configuration in `jboss-eap-6.2/standalone/configuration/standalone.xml` file.
 
  Day zero data is not set these DDLs. The first time the server starts it will generate the necessary data.
-
-  + `jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql`
-  + `jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql`
+ ```
+ jboss-eap-6.2/docs/sql/BRMSOracleDDL.sql
+ jboss-eap-6.2/docs/sql/JBPMOracleDDL.sql
+ ```
 
 + Update JBoss datasource connection details
 
@@ -55,8 +56,10 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 + Configure LDAP
 
  BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
-   + `jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml`
-   + `jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties` 
+ ```
+ jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml
+ jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties
+ ```
 
  *NOTE* Since these credentials are posted on the web, it is recommended that all passwords are changed for defaults before putting them into QA or Production environments.
 
@@ -78,17 +81,18 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 ## Reference Material
 
 + [Red Hat Customer Portal](http://access.redhat.com)
+ 
  With a subscription or current eval you can open support tickets, download packages, and search the knowledge base. 
 
 + [Red Hat Documentation](http://docs.redhat.com)
+ 
  Documentation is accessible without a login.
 
   + Refer to the EAP 6.2 documentation for configuring LDAP and Datasources
   + Refer to the JBoss Enterprise BRMS documentation for configuring BRMS
 
-+ [Middleware Administration Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-1.html)
-+ [Middleware Development Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-2.html)
- There are training courses for JBoss EAP administration, BRMS development, which may be of interest.
++ [Middleware Administration Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-1.html) & [Middleware Development Training Curriculum](https://www.redhat.com/training/paths/jboss-middleware-2.html)
+  There are training courses for JBoss EAP administration, BRMS development, which may be of interest.
 
 
 ## Kit Preconfiguration Log
