@@ -66,7 +66,7 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 ## Remaining Issues
 
-+ Building you packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
++ Building your packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
  It may be worth while to try uploading a new version of the Model JARs to the BRM and attempting to build the package again.
 
@@ -193,7 +193,7 @@ By default the jackrabbit repository will look for a repository.xml, or generate
 
 ```
 # Set the Jackrabbit repository path
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.home=$JBOSS_BASE_DIR"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.conf=$JBOSS_BASE_DIR/repository.xml -Dorg.apache.jackrabbit.repository.home=$JBOSS_BASE_DIR"
 ```
 
 + Edited `jboss-eap-6.2/bin/standalone.bat` inserting the following just before the environment variables are printed.

@@ -204,7 +204,8 @@ if "x%JBOSS_CONFIG_DIR%" == "x" (
 )
 
 rem Set the Jackrabbit repository path
-set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.jackrabbit.repository.home=%JBOSS_BASE_DIR%"
+set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.jackrabbit.repository.conf=%JBOSS_BASE_DIR%\repository.xml -Dorg.apache.jackrabbit.repository.home=%JBOSS_BASE_DIR%"
+
 
 echo ===============================================================================
 echo.

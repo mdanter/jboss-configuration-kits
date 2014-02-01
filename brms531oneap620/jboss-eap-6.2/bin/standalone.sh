@@ -250,7 +250,7 @@ if $cygwin; then
 fi
 
 # Set the Jackrabbit repository path
-JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.home=$JBOSS_BASE_DIR"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.jackrabbit.repository.conf=$JBOSS_BASE_DIR/repository.xml -Dorg.apache.jackrabbit.repository.home=$JBOSS_BASE_DIR"
 
 # Display our environment
 echo "========================================================================="
