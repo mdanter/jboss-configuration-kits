@@ -90,7 +90,7 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 + Restart and verify 
 
-## Remaining Issues
+## Issues
 
 + Building your packages throw an error message stating regarding the pojo jars. A ticket should be opened to resolve this problem.
 
@@ -100,6 +100,8 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
  Can not build the package. One or more of the classes that are needed were compiled with an unsupported Java version.,
  For example the pojo classes were compiled with Java 1.6 and Guvnor is running on Java 1.5.
  ```
+
+ **UPDATE** this error was fixed by using the 1.7 JDK. After inspecting the model JARs in the repository it is apparent that where built with a 1.7 JDK. Starting the BRMS server on Java 6 will cause this error.
 
 ## Reference Material
 
