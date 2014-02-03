@@ -65,6 +65,29 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
  Refer to the JBoss EAP 6.2 administration guide for configuring LDAP: see section [Security Administration Reference](https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/6.2/html-single/Administration_and_Configuration_Guide/index.html#chap-Security_Administration_Reference)
 
+ Stop of the server to edit the standalone.xml file - alternatively edit the server configuration with the CLI or [EAP Administration Console http://localhost:9990/console/App.html](http://localhost:9990/console/App.html) while keeping the server alive. Edit the `<subsystem xmlns="urn:jboss:domain:security:1.2">` section. Keep the UsersRoles login-module to at least the `admin` user, which is used by Guvnor. Change the flag attribute to `optional` so that the file user/password can be used *OR* LDAP.
+
+ Add the LDAP login modules to the security domain as shown in the clip below. Modify the login-module as necessary for your environment, refering to the reference documentation above for additional refernce. The clip below assumes that users have the prefix `uid` and users can be queried anonymously.
+
+ ```xml
+ <security-domain name="brms" cache-type="default">
+    <authentication>
+        <login-module code="UsersRoles" flag="optional">
+            <module-option name="usersProperties" value="${jboss.server.config.dir}/brms-users.properties"/>
+            <module-option name="rolesProperties" value="${jboss.server.config.dir}/brms-roles.properties"/>
+        </login-module>
+        <login-module code="org.jboss.security.auth.spi.LdapLoginModule" flag="optional">
+            <module-option name="java.naming.factory.initial" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+            <module-option name="java.naming.provider.url" value="ldap://adama.shuawest.net:389"/>
+            <module-option name="java.naming.security.authentication" value="none"/>
+            <module-option name="principalDNPrefix" value="uid"/>
+        </login-module>
+    </authentication>
+ </security-domain>
+ ```
+
+ Remove any logins from the `jboss-eap-6.2/standalone/configuration/brms-users.properties` file that are now coming from the LDAP server.
+
 + Restart and verify 
 
 ## Remaining Issues

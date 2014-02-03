@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <server xmlns="urn:jboss:domain:1.5">
+
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.connector"/>
@@ -25,6 +26,8 @@
         <extension module="org.jboss.as.webservices"/>
         <extension module="org.jboss.as.weld"/>
     </extensions>
+
+
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
@@ -51,7 +54,7 @@
                 <json-formatter name="json-formatter"/>
             </formatters>
             <handlers>
-                <file-handler name="file" formatter="json-formatter" relative-to="jboss.server.data.dir" path="audit-log.log"/>
+                <file-handler name="file" formatter="json-formatter" path="audit-log.log" relative-to="jboss.server.data.dir"/>
             </handlers>
             <logger log-boot="true" log-read-only="false" enabled="false">
                 <handlers>
@@ -77,6 +80,7 @@
             </role-mapping>
         </access-control>
     </management>
+
     <profile>
         <subsystem xmlns="urn:jboss:domain:logging:1.3">
             <console-handler name="CONSOLE">
@@ -120,12 +124,12 @@
             <logger category="jacorb.config">
                 <level name="ERROR"/>
             </logger>
-	    <logger category="jboss.jdbc.spy">
+            <logger category="jboss.jdbc.spy">
                 <level name="TRACE"/>
-		<handlers>
-        	    <handler name="JDBCLOG"/>
-		</handlers>
-	    </logger>
+                <handlers>
+                    <handler name="JDBCLOG"/>
+                </handlers>
+            </logger>
             <root-logger>
                 <level name="INFO"/>
                 <handlers>
@@ -136,44 +140,46 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:datasources:1.1">
             <datasources>
-		<datasource jndi-name="java:jboss/datasources/brmsDS" pool-name="brmsDS" enabled="true" use-java-context="true" spy="true">
-        		<connection-url>jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</connection-url>
-        		<driver>oracle</driver>
-        		<security>
-          			<user-name>brms</user-name>
-          			<password>brms</password>
-        		</security>
-        		<validation>
-				  <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
-				  <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
-				  <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
-        		</validation>
-      		</datasource>
-		  <xa-datasource jndi-name="java:jboss/datasources/jbpmDS" pool-name="XAOracleDS" spy="true">
-		      <driver>oracle</driver>
-		      <xa-datasource-property name="URL">jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</xa-datasource-property>
-		      <security>
-		          <user-name>jbpm</user-name>
-		          <password>jbpm</password>
-		      </security>
-		      <xa-pool>
-		           <is-same-rm-override>false</is-same-rm-override>
-		           <no-tx-separate-pools />
-		      </xa-pool>
-		      <validation>
-		          <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"></valid-connection-checker>
-		          <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"></stale-connection-checker>
-		          <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
-		      </validation>
-		  </xa-datasource>
+                <datasource jndi-name="java:jboss/datasources/brmsDS" pool-name="brmsDS" enabled="true" use-java-context="true" spy="true">
+                    <connection-url>jdbc:oracle:thin:@baltar.shuawest.net:1521:XE</connection-url>
+                    <driver>oracle</driver>
+                    <security>
+                        <user-name>brms</user-name>
+                        <password>brms</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/jbpmDS" pool-name="XAOracleDS" enabled="true" spy="true">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@baltar.shuawest.net:1521:XE
+                    </xa-datasource-property>
+                    <driver>oracle</driver>
+                    <xa-pool>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                    </xa-pool>
+                    <security>
+                        <user-name>jbpm</user-name>
+                        <password>jbpm</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                </xa-datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
-		    <driver name="oracle" module="oracle">
-		        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
-			<xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
-		    </driver>
+                    <driver name="oracle" module="oracle">
+                        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+                        <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    </driver>
                 </drivers>
             </datasources>
         </subsystem>
@@ -182,7 +188,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:1.1">
             <global-modules>
-	        <module name="org.jboss.netty" slot="main"/>
+                <module name="org.jboss.netty" slot="main"/>
             </global-modules>
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
             <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
@@ -291,14 +297,20 @@
         <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
         <subsystem xmlns="urn:jboss:domain:security:1.2">
             <security-domains>
-		<security-domain name="brms" cache-type="default">
-		   <authentication>
-		      <login-module code="UsersRoles" flag="required">
-			 <module-option name="usersProperties" value="${jboss.server.config.dir}/brms-users.properties"/>
-			 <module-option name="rolesProperties" value="${jboss.server.config.dir}/brms-roles.properties"/>
-		      </login-module>
-		   </authentication>
-		</security-domain>
+                <security-domain name="brms" cache-type="default">
+                    <authentication>
+                        <login-module code="UsersRoles" flag="optional">
+                            <module-option name="usersProperties" value="${jboss.server.config.dir}/brms-users.properties"/>
+                            <module-option name="rolesProperties" value="${jboss.server.config.dir}/brms-roles.properties"/>
+                        </login-module>
+                        <login-module code="org.jboss.security.auth.spi.LdapLoginModule" flag="optional">
+                            <module-option name="java.naming.factory.initial" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+                            <module-option name="java.naming.provider.url" value="ldap://adama.shuawest.net:389"/>
+                            <module-option name="java.naming.security.authentication" value="none"/>
+                            <module-option name="principalDNPrefix" value="uid"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
                 <security-domain name="other" cache-type="default">
                     <authentication>
                         <login-module code="Remoting" flag="optional">
@@ -351,6 +363,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
     </profile>
+
     <interfaces>
         <interface name="management">
             <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
@@ -358,15 +371,11 @@
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
-        <!-- TODO - only show this if the jacorb subsystem is added  -->
         <interface name="unsecure">
-            <!--
-              ~  Used for IIOP sockets in the standard configuration.
-              ~                  To secure JacORB you need to setup SSL 
-              -->
             <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
         </interface>
     </interfaces>
+
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
         <socket-binding name="management-native" interface="management" port="${jboss.management.native.port:9999}"/>
         <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
@@ -381,4 +390,5 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
+
 </server>
