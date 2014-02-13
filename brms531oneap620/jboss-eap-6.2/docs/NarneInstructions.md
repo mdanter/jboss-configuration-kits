@@ -1,5 +1,4 @@
 
-
 JBoss BRMS 5.3.1 on JBoss EAP 6.2.0GA
 =====================================
 
@@ -55,7 +54,7 @@ This document describes the configuration of JBoss BRMS 5.3.1 on top of EAP 6.2.
 
 + Configure LDAP
 
- BRMS requires access to itself through a username and password. This has bee configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
+ BRMS requires access to itself through a username and password. This has been configured in the following two files to use the credentials `admin/getredhat1!`. When configuring BRMS for LDAP ensure that there is a user with these credentials, or use JAAS login-module chaining for the `brms` realm. When the credentials are changed you must also edit the following two files otherwise the BPM designer will error out, and the BPM central console will not function.
  ```
  jboss-eap-6.2/standalone/deployments/designer.war/profiles/jbpm.xml
  jboss-eap-6.2/stadnalone/deployments/business-central-server.war/WEB-INF/classes/jbpm.console.properties
